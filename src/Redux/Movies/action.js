@@ -70,7 +70,6 @@ export const MoviesAction = {
             if (id == '') return;
             let result = {};
             result = await xhr.get(`http://www.omdbapi.com/?i=${id}&plot=full&apikey=${key.apiKey}`);
-            console.log('detailResult', id, result);
             dispatch(getMovieDetail(result));
         },
     setPageIndex: (pages = 1) =>

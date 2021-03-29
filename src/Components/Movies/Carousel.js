@@ -16,7 +16,6 @@ const MoviesCarousel = ({ state, mode, dispatch }) => {
     }, [])
 
     const forceSetSlide = () => {
-        debugger;
         if(!mode.id)
             return 0
         

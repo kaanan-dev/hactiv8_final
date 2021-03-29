@@ -10,7 +10,6 @@ const MovieCardContentComponent = (props) => {
 
     const onClick = (entity) => {
         return (events) => {
-            console.log(entity);
             let id = entity.data.Index % 10;
             props.dispatch(ModeAction.setMode(false, id));
             history.push('/carousel');

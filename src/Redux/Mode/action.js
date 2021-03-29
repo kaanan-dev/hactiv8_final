@@ -10,7 +10,6 @@ export const ModeAction = {
     setMode : (mode, id = '') =>
         (dispatch) => {
             let state = {mode, id};
-            console.log('modestate', state);
             dispatch(setMode(state));
         }
 }

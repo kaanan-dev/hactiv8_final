@@ -13,7 +13,6 @@ const { Search } = Input;
 const SearchComponent = ({ state, mode,dispatch }) => {
     let history = useHistory();
     const switchChanged = () => {
-        debugger;
         let e = !mode.mode;
         dispatch(ModeAction.setMode(e))
         if (e) {

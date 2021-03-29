@@ -7,7 +7,6 @@ const { Title, Paragraph, Link } = Typography;
 const MovieCarouselContentComponent = (props) => {
     const onClick = (entity) => {
         return (events) => {
-            console.log(entity);
         }
     }
 
