@@ -1,6 +1,5 @@
 import { Input, Row, Col, Switch } from 'antd';
 import { LoginOutlined, WindowsOutlined } from '@ant-design/icons';
-import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import { MoviesAction } from "../../Redux/Movies/action";
 import { SearchAction } from "../../Redux/Search/action";
@@ -9,16 +8,9 @@ import { ModeAction } from '../../Redux/Mode/action';
 const { Search } = Input;
 
 const SearchComponent = ({ state, mode,dispatch }) => {
-    let history = useHistory();
     const switchChanged = () => {
         let e = !mode.mode;
         dispatch(ModeAction.setMode(e))
-        if (e) {
-            history.push('/cards');
-            return;
-        }
-        history.push('/carousel');
-
     }
     const searchMovies = (e) => {
         let input = e;
@@ -27,7 +19,6 @@ const SearchComponent = ({ state, mode,dispatch }) => {
             return;
         }
         dispatch(MoviesAction.getMovies(state));
-        dispatch(ModeAction.setMode(true));
     }
     const setQuery = (e) => {
         let input = e.nativeEvent.srcElement.value;

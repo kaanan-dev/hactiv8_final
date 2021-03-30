@@ -3,6 +3,7 @@ import * as key from '../../Utils/Constants/key'
 import * as xhr from '../../Utils/xhr'
 import { ErrorAction } from '../../Utils/Error';
 import { LoadingAction } from "../Loading/action";
+import { ModeAction } from '../Mode/action';
 
 
 const getMovies = (payload, totalData) => ({
@@ -39,13 +40,16 @@ export const MoviesAction = {
 
             let dataResult = result.Search.map((v, i) => ({ ...v, Index: i }));
             dispatch(getMovies(dataResult, result.totalResults));
-            let state = getState().movies;
+            let combinedState = getState();
+            let state = combinedState.movies;
             for (let i = state.size; i > 0; i--) {
                 let currentState = state.item[(state.page * state.size) - i];
                 if (currentState && !currentState.Plot) {
                     dispatch(MoviesAction.getDetail(currentState.imdbID))
                 }
             }
+            dispatch(ModeAction.setMode(true));
+            dispatch(MoviesAction.setPageIndex(1));
             dispatch(LoadingAction.setStatus(false));
         },
     addMovies: (query = '', pages = 1) =>
@@ -74,7 +78,7 @@ export const MoviesAction = {
             dispatch(getMovieDetail(result));
         },
     setPageIndex: (pages = 1) =>
-        async (dispatch, getState)  => {
+        async (dispatch, getState) => {
             dispatch(setPage(pages));
             let index = (pages * 10) - 5;
             let state = getState().movies;

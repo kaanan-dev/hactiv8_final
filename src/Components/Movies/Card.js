@@ -55,7 +55,7 @@ const MoviesCards = ({ state, loading, dispatch }) => {
             <Pagination
                 total={state.totalData}
                 showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-                defaultCurrent={1}
+                current={state.page}
                 onChange={changePage}
                 style={{ paddingBottom: 100, paddingTop: 30 }}
                 showSizeChanger={false}
