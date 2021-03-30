@@ -17,7 +17,7 @@ const MovieCarouselContentComponent = (props) => {
                 </Col>
                 <Col span={17} justify="start" style={{ textAlign: 'start', paddingLeft: 70 }}>
                     <Title level={2} type={'secondary'} style={{ marginBottom: 0, marginTop: '10vh' }}>{props.data.Year}</Title>
-                    <Rate disabled value={props.data.imdbRating} allowHalf style={{ color: '#001529' }} ></Rate>
+                    <Rate disabled value={props.data.imdbRating/2} allowHalf style={{ color: '#001529' }} ></Rate>
                     <Title style={{ marginTop: 0 }} strong>{props.data.Title}</Title>
                     {
                         props.data.Genre?.length &&
