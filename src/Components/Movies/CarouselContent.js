@@ -5,11 +5,6 @@ import defaultImg from "../../Assets/no-image.png";
 const { Title, Paragraph, Link } = Typography;
     
 const MovieCarouselContentComponent = (props) => {
-    const onClick = (entity) => {
-        return (events) => {
-        }
-    }
-
     const imgError =(e) => {
         e.nativeEvent.target.src = defaultImg;
     }

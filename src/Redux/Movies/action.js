@@ -34,6 +34,7 @@ export const MoviesAction = {
             dispatch(LoadingAction.setStatus(true));
             let pages = 1;
             let result = await xhr.get(`http://www.omdbapi.com/?s=${query}&page=${pages}&apikey=${key.apiKey}`);
+
             if (!result.Search) ErrorAction.setError(result.Error);
 
             let dataResult = result.Search.map((v, i) => ({ ...v, Index: i }));
@@ -41,7 +42,7 @@ export const MoviesAction = {
             let state = getState().movies;
             for (let i = state.size; i > 0; i--) {
                 let currentState = state.item[(state.page * state.size) - i];
-                if (!currentState.Plot) {
+                if (currentState && !currentState.Plot) {
                     dispatch(MoviesAction.getDetail(currentState.imdbID))
                 }
             }

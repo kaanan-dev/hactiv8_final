@@ -4,10 +4,8 @@ import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import { MoviesAction } from "../../Redux/Movies/action";
 import { SearchAction } from "../../Redux/Search/action";
-import { useEffect } from 'react';
 import { ErrorAction } from '../../Utils/Error';
 import { ModeAction } from '../../Redux/Mode/action';
-const { Option } = Select;
 const { Search } = Input;
 
 const SearchComponent = ({ state, mode,dispatch }) => {
@@ -22,10 +20,14 @@ const SearchComponent = ({ state, mode,dispatch }) => {
         history.push('/carousel');
 
     }
-
-
     const searchMovies = (e) => {
+        let input = e;
+        if(input.length < 3){
+            ErrorAction.setError("Required 3 character at least")
+            return;
+        }
         dispatch(MoviesAction.getMovies(state));
+        dispatch(ModeAction.setMode(true));
     }
     const setQuery = (e) => {
         let input = e.nativeEvent.srcElement.value;
@@ -50,11 +52,6 @@ const SearchComponent = ({ state, mode,dispatch }) => {
                 />
             </Col>
             <Col md={{ span: 6, offset: 15 }}>
-                <Input.Group compact>
-                    <Select defaultValue="Movie" style={{ width: '30%' }} bordered={false} >
-                        <Option value="Movie">Movie</Option>
-                        <Option value="Series">Series</Option>
-                    </Select>
                     <Search
                         style={{ width: '70%' }}
                         placeholder="Search"
@@ -63,7 +60,6 @@ const SearchComponent = ({ state, mode,dispatch }) => {
                         onChange={setQuery}
                         onSearch={searchMovies}
                     />
-                </Input.Group>
             </Col>
             <Col md={{ span: 1 }}></Col>
         </Row>

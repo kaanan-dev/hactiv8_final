@@ -12,15 +12,12 @@ import Footer from './Components/Footer'
 import Card from './Components/Movies/Card'
 import Carousel from './Components/Movies/Carousel'
 
+
 function App() {
   return (
     <div className="App">
       <Header />
-
-
-      <Router>
         <Search />
-
           <Switch>
             <Route exact path="/">
               <Carousel />
@@ -32,7 +29,7 @@ function App() {
               <Carousel />
             </Route>
           </Switch>
-      </Router>
+      
 
 
 

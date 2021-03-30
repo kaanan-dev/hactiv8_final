@@ -14,6 +14,11 @@ const MoviesCarousel = ({ state, mode, dispatch }) => {
             i++;
         }
     }, [])
+    const paging = (val) => {
+        let start = (state.page - 1) * state.size;
+        let end = state.page * state.size;
+        return val.Index >= start && val.Index < end;
+    }
 
     const forceSetSlide = () => {
         if(!mode.id)
@@ -27,7 +32,7 @@ const MoviesCarousel = ({ state, mode, dispatch }) => {
                 <Carousel dotPosition={'bottom'} draggable initialSlide={forceSetSlide()}  >
                     {state.item &&
                         state.item
-                            .filter(v => (v.Index >= ((state.page - 1) * state.size) && v.Index < ((state.page) * state.size)))
+                            .filter(paging)
                             .map((val, index) => {
                                 return (
                                     <Content key={index} data={val} />
