@@ -33,7 +33,7 @@ export const MoviesAction = {
         async (dispatch, getState) => {
             dispatch(LoadingAction.setStatus(true));
             let pages = 1;
-            let result = await xhr.get(`http://www.omdbapi.com/?s=${query}&page=${pages}&apikey=${key.apiKey}`);
+            let result = await xhr.get(`https://www.omdbapi.com/?s=${query}&page=${pages}&apikey=${key.apiKey}`);
 
             if (!result.Search) ErrorAction.setError(result.Error);
 
@@ -51,7 +51,7 @@ export const MoviesAction = {
     addMovies: (query = '', pages = 1) =>
         async (dispatch, getState) => {
             dispatch(LoadingAction.setStatus(true));
-            let result = await xhr.get(`http://www.omdbapi.com/?s=${query}&page=${pages}&apikey=${key.apiKey}`);
+            let result = await xhr.get(`https://www.omdbapi.com/?s=${query}&page=${pages}&apikey=${key.apiKey}`);
             if (!result.Search) ErrorAction.setError(result.Error);
 
             let dataResult = result.Search.map((v, i) => ({ ...v, Index: ((pages - 1) * 10) + i }));
@@ -70,7 +70,7 @@ export const MoviesAction = {
         async (dispatch) => {
             if (id === '') return;
             let result = {};
-            result = await xhr.get(`http://www.omdbapi.com/?i=${id}&plot=full&apikey=${key.apiKey}`);
+            result = await xhr.get(`https://www.omdbapi.com/?i=${id}&plot=full&apikey=${key.apiKey}`);
             dispatch(getMovieDetail(result));
         },
     setPageIndex: (pages = 1) =>
