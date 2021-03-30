@@ -12,7 +12,7 @@ const MovieCarouselContentComponent = (props) => {
         <>
             <Row style={{ height: '80vh' }} >
                 <Col md={{ span: 4, offset: 3 }}>
-                    <img src={props.data.Poster} style={{ position: 'relative', top: '10vh', maxWidth: '20vw' }} onError={(e) => {imgError(e)}}  ></img>
+                    <img src={props.data.Poster} style={{ position: 'relative', top: '10vh', maxWidth: '20vw' }} onError={(e) => {imgError(e)}} alt={props.Title} ></img>
                 </Col>
                 <Col span={17} justify="start" style={{ textAlign: 'start', paddingLeft: 70 }}>
                     <Title level={2} type={'secondary'} style={{ marginBottom: 0, marginTop: '10vh' }}>{props.data.Year}</Title>
