@@ -68,7 +68,7 @@ export const MoviesAction = {
         },
     getDetail: (id = '') =>
         async (dispatch) => {
-            if (id == '') return;
+            if (id === '') return;
             let result = {};
             result = await xhr.get(`http://www.omdbapi.com/?i=${id}&plot=full&apikey=${key.apiKey}`);
             dispatch(getMovieDetail(result));
@@ -79,7 +79,7 @@ export const MoviesAction = {
             let index = (pages * 10) - 5;
             let state = getState().movies;
             let search = getState().search;
-            let isNeedData = !state.item.some(v => (v.Index == index))
+            let isNeedData = !state.item.some(v => (v.Index === index))
             if (isNeedData)
                 dispatch(MoviesAction.addMovies(search, pages));
         },

@@ -96,9 +96,9 @@ const reducer = (state = initialState, action) => {
         case types.GET_MOVIES:
             return { page: 1, size: 10, item: action.payload, totalData:action.totalData };
         case types.ADD_MOVIES:
-            return { ...state, item: [... new Set([...state.item, ...action.payload]) ] };
+            return { ...state, item: [...state.item, ...action.payload ] };
         case types.GET_MOVIESDETAIL:
-            let changes = state.item.map(v => { if (v.imdbID == action.payload.imdbID) return { ...v, ...action.payload }; return v; });
+            let changes = state.item.map(v => { if (v.imdbID === action.payload.imdbID) return { ...v, ...action.payload }; return v; });
             return { ...state, item: [...changes] };
         case types.SET_PAGES_SIZE:
             return { ...state, size: action.payload };

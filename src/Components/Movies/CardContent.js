@@ -21,7 +21,7 @@ const MovieCardContentComponent = (props) => {
         <Col md={{ span: 6 }} onClick={onClick(props)} >
             <Row justify="space-around" align="middle" style={{ height: 300 }}>
                 <Col >
-                    <img width={200} src={props.data.Poster} style={{ maxHeight: 300, position: 'relative' }} onError={(e) => {imgError(e)}} />
+                    <img width={200} src={props.data.Poster} style={{ maxHeight: 300, position: 'relative' }} onError={(e) => {imgError(e)}} alt={props.Title} />
 
                 </Col>
             </Row>

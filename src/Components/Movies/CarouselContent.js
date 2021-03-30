@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Row, Col, Typography, Rate, Button } from 'antd';
 import { EditFilled, NotificationFilled } from '@ant-design/icons';
 import defaultImg from "../../Assets/no-image.png";

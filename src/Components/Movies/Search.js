@@ -1,4 +1,4 @@
-import { Input, Select, Row, Col, Switch, Button } from 'antd';
+import { Input, Row, Col, Switch } from 'antd';
 import { LoginOutlined, WindowsOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux';

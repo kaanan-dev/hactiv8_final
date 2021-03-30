@@ -4,7 +4,7 @@ import {ErrorAction} from "./Error";
 export const post = async (url, data) => {
     try {
         let response = await axios.post(url, data);
-        if (response.status == 200) {
+        if (response.status === 200) {
             return response.data;
         }
     } catch (error) {
@@ -15,7 +15,7 @@ export const post = async (url, data) => {
 export const get = async (url) => {
     try {
         let response = await axios.get(url);
-    if (response.status == 200) {
+    if (response.status === 200) {
         return response.data;
         }
     } catch (error) {
