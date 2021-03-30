@@ -1,14 +1,12 @@
 import { Row, Pagination } from 'antd';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { MoviesAction } from '../../Redux/Movies/action';
 import SkeletonContent from "../Skeleton/CardContent";
 
 import Content from './CardContent';
 
 
-const MoviesCards = ({ state, search, loading, dispatch }) => {
-    let history = useHistory();
+const MoviesCards = ({ state, loading, dispatch }) => {
 
     const changePage = (page, pageSize) => {
         dispatch(MoviesAction.setPageIndex(page));
@@ -69,5 +67,5 @@ const MoviesCards = ({ state, search, loading, dispatch }) => {
 }
 
 export default connect(
-    (combinedReducerState) => ({ state: combinedReducerState.movies, search: combinedReducerState.search, loading: combinedReducerState.loading })
+    (combinedReducerState) => ({ state: combinedReducerState.movies, loading: combinedReducerState.loading })
 )(MoviesCards);

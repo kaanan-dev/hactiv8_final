@@ -2,11 +2,9 @@ import { Row, Col } from 'antd';
 import { StarTwoTone } from '@ant-design/icons';
 import defaultImg from "../../Assets/no-image.png";
 import { ModeAction } from '../../Redux/Mode/action';
-import { useHistory } from 'react-router-dom';
 
 
 const MovieCardContentComponent = (props) => {
-    let history = useHistory();
 
     const onClick = (entity) => {
         return (events) => {
