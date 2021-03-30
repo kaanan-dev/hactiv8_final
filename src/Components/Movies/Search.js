@@ -1,4 +1,4 @@
-import { Input, Row, Col, Switch } from 'antd';
+import { Input, Row, Col, Switch, Button } from 'antd';
 import { LoginOutlined, WindowsOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { MoviesAction } from "../../Redux/Movies/action";
@@ -47,7 +47,7 @@ const SearchComponent = ({ state, mode,dispatch }) => {
                         style={{ width: '70%' }}
                         placeholder="Search"
                         value={state}
-                        enterButton="Search"
+                        enterButton={<Button type={'ghost'} style={{padding:4, width:'5vw'}} >Search</Button>}
                         onChange={setQuery}
                         onSearch={searchMovies}
                     />

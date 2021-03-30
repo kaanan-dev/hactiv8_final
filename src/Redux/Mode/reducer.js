@@ -1,7 +1,7 @@
 import * as types from '../../Utils/Constants/ActionTypes'
 
 let initState = {
-    mode: true,
+    mode: false,
     id: ''
 }
 ///true : cards

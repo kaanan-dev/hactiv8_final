@@ -13,7 +13,7 @@ const MoviesCarousel = ({ state, mode, dispatch }) => {
                 dispatch(MoviesAction.getDetail(state.item[i].imdbID));
             i++;
         }
-    }, [])
+    }, [state, dispatch])
     const paging = (val) => {
         let start = (state.page - 1) * state.size;
         let end = state.page * state.size;

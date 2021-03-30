@@ -8,7 +8,7 @@ export const ErrorAction= {
             description:
               error,
             placement:'bottomRight',
-            duration:2,
+            duration:3,
           });
     }
 }
