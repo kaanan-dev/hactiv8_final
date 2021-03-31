@@ -38,7 +38,7 @@ const MoviesCards = ({ state, loading, dispatch }) => {
 
     return (
         <>
-            <Row gutter={[0, 40]} style={{ paddingLeft: 150, paddingRight: 150, paddingTop: 30, maxHeight: 1300, minHeight:1300 }} justify="start" align="top" >
+            <Row gutter={[0, 40]} style={{ paddingLeft: 150, paddingRight: 150, paddingTop: 30, maxHeight: 800, minHeight:800 }} justify="start" align="top" >
                 {
                     !loading ?
                         state.item

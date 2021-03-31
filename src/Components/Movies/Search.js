@@ -5,28 +5,31 @@ import { MoviesAction } from "../../Redux/Movies/action";
 import { SearchAction } from "../../Redux/Search/action";
 import { ErrorAction } from '../../Utils/Error';
 import { ModeAction } from '../../Redux/Mode/action';
+import { useEffect } from 'react';
+import { useDebounce } from 'use-lodash-debounce'
 const { Search } = Input;
 
 const SearchComponent = ({ state, mode,dispatch }) => {
+    const debouncedValue = useDebounce(state, 800)
+    
+    useEffect(() => {
+        if(debouncedValue.length < 3){
+            ErrorAction.setError("Required 3 character at least")
+        }
+    }, [debouncedValue])
+
     const switchChanged = () => {
         let e = !mode.mode;
         dispatch(ModeAction.setMode(e))
     }
     const searchMovies = (e) => {
-        let input = e;
-        if(input.length < 3){
-            ErrorAction.setError("Required 3 character at least")
-            return;
-        }
         dispatch(MoviesAction.getMovies(state));
     }
     const setQuery = (e) => {
         let input = e.nativeEvent.srcElement.value;
-        if(input.length < 3){
-            ErrorAction.setError("Required 3 character at least")
-        }
         dispatch(SearchAction.setQuery(input));
     }
+    const isDisabled = () => state.length < 3
 
     return (
         <Row style={{ padding: 8 }}>
@@ -47,7 +50,7 @@ const SearchComponent = ({ state, mode,dispatch }) => {
                         style={{ width: '70%' }}
                         placeholder="Search"
                         value={state}
-                        enterButton={<Button type={'ghost'} style={{padding:4, width:'5vw'}} >Search</Button>}
+                        enterButton={<Button disabled={isDisabled()} type={'ghost'} style={{padding:4, width:'5vw'}} >Search</Button>}
                         onChange={setQuery}
                         onSearch={searchMovies}
                     />
